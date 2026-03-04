@@ -22,7 +22,7 @@ import sys
 def main():
     backend_root = pathlib.Path(__file__).parent.parent / 'api'
     try:
-        subprocess.run('poetry export --format requirements.txt --output requirements.txt'
+        subprocess.run('poetry export --format requirements.txt --output requirements.txt --without-hashes'
                        .split(), check=True, cwd=os.fspath(backend_root))
     except subprocess.CalledProcessError as exc:
         if not poetry_may_have_export():
